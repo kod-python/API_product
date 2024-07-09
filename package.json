@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "proxy": "https://kodviper.pythonanywhere.com/api/products/"
+
   },
   "dependencies": {
     "react": "^18",

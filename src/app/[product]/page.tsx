@@ -5,8 +5,11 @@ import { TProds } from "@/components/product/product";
 import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa";
 
+
 const ProductPage = ({ params }: { params: { product: string } }) => {
-  const [product, setProduct] = useState<TProds | null>(null);
+  const [product, setProduct] = useState<TProds|null>(null);
+  
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,8 +26,8 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           throw new Error('Network response was not ok');
         }
 
-        const data = await response.json();
-        setProduct(data.product);
+        const dat = await response.json();
+        setProduct(dat.product);
       } catch (error) {
         console.error('Fetch error:', error);
       }
@@ -44,10 +47,10 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
         </h1>
       </section>
 
-      {product ? (
+       {product ? (
         <section className="text-center">
           <img
-            src={product.image || '/default-image.jpg'}  // Fallback image if product.image is not available
+            src={product.image || '/default-image.jpg'}  
             alt={`${product.name} product`}
             className="mx-auto mb-4"
           />
@@ -55,9 +58,9 @@ const ProductPage = ({ params }: { params: { product: string } }) => {
           <p className="text-gray-600">{product.description}</p>
           <p className="text-green-500">Quantity: {product.quantity}</p>
         </section>
-      ) : (
-        <p className="text-center text-gray-500">Loading...</p>
-      )}
+      ):(
+        <p className="text-center">Loading ..</p>
+      ) } 
     </div>
   );
 };

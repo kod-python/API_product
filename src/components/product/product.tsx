@@ -22,6 +22,8 @@ const [products, setProducts] = useState<TProds[]>([]);
 // const [products, setProducts] =  useState([])
 
 
+
+
 useEffect(() => {
      const getProducts =  async () =>{
     //    const response = await fetch("https://kodviper.pythonanywhere.com/api/products/",{
@@ -45,28 +47,31 @@ return(
 
 <div>
 
-<h1>Products</h1>
+<h1 className='font-bold uppercase text-center underline text-blue-500 text-[2rem]'>Products</h1>
 
-<div>
-    {products && products.length > 0 ? (
-        products.map((product) => (
-            <div key={product.id}>
+<div className='w-[400px] mx-auto p-10 flex gap-[60px] space-x-8  items-center '>
+    {products.map((product) => (
+            <div className='text-center' key={product.id}>
              
-                <p>{product.id}</p>
+             <div className="flex flex-col">
+             <p className='text-center'>{product.id}</p>
+             <p>{product.name}</p>
                 <img
               src={product.image}
               alt={`${product.name}`}
             />
-                <p>{product.name}</p>
-                {/* <p>{product.description}</p>
-                <p>{product.quantity}</p> */}
+              
+                <p className='text-center'>Deescription: {product.description}</p>
+                <p className='text-center'>Quantity: {product.quantity}</p>
+             </div>
+                
 
 
 
                <Link href={`/${product.id}`}>
                
                <div>
-                <button className='border border-orange-400'>view details</button>
+                <button className='border border-orange-400 rounded py-1 px-7 btn'>view details</button>
                </div>
                
                </Link>
@@ -75,9 +80,7 @@ return(
 
             </div>
         ))
-    ) : (
-        <p>Not found</p>
-    )}
+    }
 </div>
 
 
